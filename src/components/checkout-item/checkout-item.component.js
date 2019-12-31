@@ -1,7 +1,6 @@
 import React from 'react'
 import './checkout-item.styles.scss'
 import { connect} from 'react-redux'
-import { createStructuredSelector } from 'reselect'
 import { clearItemFromCart, addItem, removeItem } from '../../redux/cart/cart.actions'
 
 
@@ -24,7 +23,7 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) =>{
         </div>
     </div>
 )}
-
+ 
 const mapDispatchToProps = dispatch =>(
     {
         clearItem: item => dispatch(clearItemFromCart(item)),
