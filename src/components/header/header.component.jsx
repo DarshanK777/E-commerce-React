@@ -1,5 +1,4 @@
 import React from 'react'
-import{ Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './header.styles.scss'
 import {ReactComponent as Logo} from '../../assets/crown.svg'
@@ -9,32 +8,32 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import { createStructuredSelector } from 'reselect'
 import { selectCartHidden } from '../../redux/cart/cart.selectors'
 import { selectCurrentUser } from '../../redux/user/user.selector'
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from './header.styles'
 
 const Header = ({ currentUser, hidden }) => (
-    <div className='header'>
-        <Link to='/'>
+    <HeaderContainer>
+        <LogoContainer to='/'>
             <Logo className='logo'/>
-        </Link>
-        <div className='options'>
-        <Link to='/shop' className='option'>
-            SHOP
-        </Link>
-        <Link to='/contact' className='option'>
-        CONTACT
-        </Link>
-        {
-            currentUser?
-            <div className='option' onClick={()=> auth.signOut()}>SIGN OUT
-            </div>
-            :
-            <Link  to='/signin' className='option'>
-            SIGN IN
-            </Link>
+        </LogoContainer>
+        <OptionsContainer>
+            <OptionLink to='/shop'>
+                SHOP
+            </OptionLink>
+            <OptionLink to='/contact' >
+                CONTACT
+            </OptionLink>
+            {
+                currentUser?
+                <OptionLink as='div' onClick={()=> auth.signOut()}>SIGN OUT</OptionLink>
+                :
+                <OptionLink  to='/signin'>
+                    SIGN IN
+                </OptionLink>
 
-        }
-        <CartIcon/>
+            }
+            <CartIcon/>
 
-        </div>
+        </OptionsContainer>
         {
             hidden?
             null:
@@ -42,7 +41,7 @@ const Header = ({ currentUser, hidden }) => (
 
         }
         
-    </div>
+    </HeaderContainer>
 )
 
 const mapStateToProps = createStructuredSelector({
