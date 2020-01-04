@@ -13,7 +13,7 @@ const selectShop = state => state.shop
 
 export const selectCollections = createSelector(
     [selectShop],
-    shop => shop.collections
+    shop => shop.collections,
 )
 
 export const selectCollection = collectionUrlParam =>
@@ -21,7 +21,7 @@ export const selectCollection = collectionUrlParam =>
         [selectCollections],
         // collections => collections.find(
         //     collection => collection.id === COLLECTION_ID_MAP[collectionUrlParam])
-        collections=>collections[collectionUrlParam]
+        collections => collections[collectionUrlParam]
     )
 
     export const selectCollectionsForPreview = createSelector(

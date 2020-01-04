@@ -11,6 +11,8 @@ import {auth, createUserProfileDocument} from './firebase/firebase.utils'
 import { setCurrentUser } from './redux/user/user.action'
 import { selectCurrentUser } from './redux/user/user.selector'
 import { createStructuredSelector } from 'reselect'
+//import { selectCollectionsForPreview } from './redux/shop/shop.selector'
+
 
 
 class App extends React.Component{
@@ -31,6 +33,7 @@ class App extends React.Component{
         })
        }
        setCurrentUser(userAuth)
+      // addCollectionAndItems('collections', collectionsArray.map(({title, items}) => ({title, items})))
 
       })
   }
@@ -58,6 +61,7 @@ render(){
 const mapStateToProps = createStructuredSelector(
 {
   currentUser : selectCurrentUser
+ // collectionsArray: selectCollectionsForPreview
 })
 
 const mapDispathToProps = dispatch =>({
