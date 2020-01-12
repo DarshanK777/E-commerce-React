@@ -21,10 +21,20 @@ export const selectCollection = collectionUrlParam =>
         [selectCollections],
         // collections => collections.find(
         //     collection => collection.id === COLLECTION_ID_MAP[collectionUrlParam])
-        collections => collections[collectionUrlParam]
+        collections => (collections? collections[collectionUrlParam]: null)
     )
 
-    export const selectCollectionsForPreview = createSelector(
-        [selectCollections],
-        collections => Object.keys(collections).map(key => collections[key])
-    )
+export const selectCollectionsForPreview = createSelector(
+    [selectCollections],
+    collections => collections? Object.keys(collections).map(key => collections[key]) : []
+)
+
+export const selectIsCollectionFetching = createSelector(
+    [selectShop],
+    shop => shop.isfetching
+)
+
+export const selectIsCollectionLoaded = createSelector(
+    [selectShop],
+    shop => !!shop.collections
+)
